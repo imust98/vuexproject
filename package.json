@@ -9,7 +9,10 @@
     "url": "https://g.hz.netease.com/hzlihaoliang/napm4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --color",
+    "test": "npm run stylelint && npm run tslint",
+    "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
+    "tslint": "tslint ./src/**/*.ts"
   },
   "keywords": [
     "apm",

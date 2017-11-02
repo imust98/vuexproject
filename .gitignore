@@ -1,0 +1,12 @@
+.idea
+.vscode
+.DS_Store
+node_modules
+npm-debug.log
+package-lock.json
+
+# emacs临时文件
+\#*\#
+
+# 前端生成文件
+dist/
