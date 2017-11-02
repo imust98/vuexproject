@@ -1,0 +1,58 @@
+{
+  "name": "napm4",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "http://napm.netease.com/",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://g.hz.netease.com/hzlihaoliang/napm4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apm",
+    "web"
+  ],
+  "author": "hzlihaoliang@corp.netease.com",
+  "license": "ISC",
+  "dependencies": {
+    "highlight.js": "^9.12.0",
+    "vue": "^2.5.2",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^6.0.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.0",
+    "vuex-router-sync": "^5.0.0",
+    "vuedraggable": "^2.14.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.41",
+    "@types/webpack-env": "^1.13.2",
+    "assets-webpack-plugin": "^3.5.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "nei": "^3.6.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "stylelint": "^8.2.0",
+    "stylelint-config-recommended-scss": "^2.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-order": "^0.7.0",
+    "stylelint-processor-html": "^1.0.0",
+    "stylelint-scss": "^2.1.0",
+    "stylelint-webpack-plugin": "^0.9.0",
+    "ts-loader": "^2.3.7",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.5.3",
+    "url-loader": "^0.6.2",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.2",
+    "vue-loader": "^13.3.0",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.2"
+  }
+}
