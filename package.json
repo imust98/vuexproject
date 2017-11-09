@@ -12,7 +12,8 @@
     "start": "webpack-dev-server --color",
     "test": "npm run stylelint && npm run tslint",
     "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
-    "tslint": "tslint ./src/**/*.ts"
+    "tslint": "tslint ./src/**/*.ts",
+    "build":"webpack  --config webpack.prod.config.js"
   },
   "keywords": [
     "apm",
@@ -56,6 +57,8 @@
     "vue-template-compiler": "^2.5.2",
     "vue-loader": "^13.3.0",
     "webpack": "^3.7.1",
-    "webpack-dev-server": "^2.9.2"
+    "webpack-dev-server": "^2.9.2",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "optimize-css-assets-webpack-plugin": "^2.0.0"
   }
 }
