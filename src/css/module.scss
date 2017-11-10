@@ -1,0 +1,56 @@
+
+.g-head {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background-color: #143f6d;
+  border-bottom: 1px solid #cfd8dc;
+  .title {
+    padding-left: 30px;
+    font-size: 20px;
+    line-height: 60px;
+    color: #fff;
+  }
+  .userInfo {
+    padding-right: 30px;
+    font-size: 16px;
+    line-height: 60px;
+    color: #2d8cf0;
+  }
+}
+
+.g-body {
+  position: absolute;
+  top: 61px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.g-side {
+  width: 200px;
+  color: #fff;
+  background: #0d5477;
+  .side {
+    .tab {
+      display: block;
+      padding: 1rem 2rem;
+      font-size: 14px;
+      color: #fff;
+      &:hover,
+      &.tab-active {
+        background: #20a8d8;
+      }
+    }
+  }
+}
+
+.g-main {
+  flex: 1;
+  background-color: #eff0f4;
+}
+
+.m-main{
+  padding: 20px;
+}
