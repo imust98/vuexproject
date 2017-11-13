@@ -1,8 +1,8 @@
 let fs = require('fs');
 let basepath = 'src/components/';
 let params = process.argv;
-let componentName = params[2];
-let author = params[3];
+let componentName = params[2] || 'ComponentName';
+let author = params[3] || '';
 let tempJs = `${basepath}/ComTemplate/index.vue`;
 
 //创建文件夹
