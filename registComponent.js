@@ -10,8 +10,8 @@ let mkdir = function () {
   return new Promise((res, rej) => {
     fs.mkdir(basepath + componentName, (err) => {
       if (err) rej(err);
-      res(basepath);
     });
+    res();
   })
 }
 //读取模板文件内容，并替换为目标组件
@@ -21,18 +21,15 @@ let writeFile = function () {
     text = text.replace(/time/g, new Date().toLocaleDateString())
       .replace(/componentName/g, componentName)
       .replace(/author/g, author)
-      fs.writeFileSync(`${basepath}${componentName}/index.vue`,text);
+    fs.writeFileSync(`${basepath}${componentName}/index.vue`, text);
+    console.log(`SuccessFully created ${componentName} component`)
     res(text);
   })
 }
 
-async function registCom() {
-  try {
-    await mkdir();
-    await writeFile();
-    return console.log(`SuccessFully created ${componentName} component`)
-  } catch (err) {
-    console.log(err);
-  }
+function registCom() {
+  mkdir().then(function () {
+    writeFile();
+  })
 }
 registCom();
