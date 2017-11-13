@@ -13,7 +13,8 @@
     "test": "npm run stylelint && npm run tslint",
     "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
     "tslint": "tslint ./src/**/*.ts",
-    "build":"webpack  --config webpack.prod.config.js"
+    "build":"webpack  --config webpack.prod.config.js",
+    "regist-com":"node registComponent.js"
   },
   "keywords": [
     "apm",
