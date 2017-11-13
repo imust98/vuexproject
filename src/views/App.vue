@@ -41,8 +41,8 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import { Component, Prop, Watch } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Prop, Watch } from 'vue-property-decorator';
 @Component
 export default class App extends Vue {
   private activeTab: string;
@@ -50,9 +50,9 @@ export default class App extends Vue {
     this.onRouterChange();
   }
 
-  @Watch("$route")
+  @Watch('$route')
   private onRouterChange() {
-    const path: string = this.$route.path || "";
+    const path: string = this.$route.path || '';
     let activeTab: string;
     activeTab = path.slice(1);
     this.activeTab = activeTab || 'userManage';
