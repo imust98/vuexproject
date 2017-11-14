@@ -9,12 +9,13 @@
     "url": "https://g.hz.netease.com/hzlihaoliang/napm4"
   },
   "scripts": {
-    "start": "webpack-dev-server --color",
+    "start": "webpack-dev-server --config webpack.dev.config.js",
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
     "test": "npm run stylelint && npm run tslint",
     "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
     "tslint": "tslint ./src/**/*.ts",
-    "build":"webpack  --config webpack.prod.config.js",
-    "regist-com":"node registComponent.js"
+    "build": "webpack  --config webpack.prod.config.js",
+    "regist-com": "node registComponent.js"
   },
   "keywords": [
     "apm",
@@ -36,10 +37,15 @@
     "@types/node": "^8.0.41",
     "@types/webpack-env": "^1.13.2",
     "assets-webpack-plugin": "^3.5.1",
+    "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^1.1.5",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
     "nei": "^3.6.0",
     "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "stylelint": "^8.2.0",
@@ -54,12 +60,11 @@
     "tslint-loader": "^3.5.3",
     "typescript": "^2.6",
     "url-loader": "^0.6.2",
+    "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.2",
-    "vue-loader": "^13.3.0",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.2",
-    "extract-text-webpack-plugin": "^2.0.0",
-    "optimize-css-assets-webpack-plugin": "^2.0.0"
+    "webpack-merge": "^4.1.1"
   }
 }
