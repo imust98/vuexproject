@@ -1,112 +1,80 @@
 "use strict";
-
-const path = require('path');
-const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
+var path = require('path')
+var webpack = require('webpack')
+var merge = require('webpack-merge')
+var baseWebpackConfig = require('./webpack.base.config')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-function getPath(tsPath) {
-  return path.join(__dirname, tsPath);
+function resolve(dir) {
+  return path.join(__dirname, dir);
 }
 
-const config = {
-  entry: {
-    'app': getPath('/src/index.ts')
-  },
+module.exports = merge(baseWebpackConfig, {
   output: {
-    path: getPath('/dist/'),
-    filename: '[name].js',
-    publicPath: '/dist/',
-    chunkFilename: '[name].js'
-  },
-  resolve: {
-    extensions: ['.ts', '.js', '.vue', '.json']
+    path: resolve('/dist/'),
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js'
   },
   plugins: [
-    new StylelintPlugin({
-      files: [
-        '**/*.vue',
-        '**/*.scss'
-      ]
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'css/[name].[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true
       }
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    //   }
+    // }),
+    // generate dist index.html with correct asset hash for caching.
+    // you can customize output by editing /index.html
+    // see https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency'
     }),
+    // keep module.id stable when vender modules does not change
+    new webpack.HashedModuleIdsPlugin(),
+    // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function (module) {
-        return module.context && module.context.indexOf('node_modules') !== -1;
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            path.join(__dirname, '../node_modules')
+          ) === 0
+        )
       }
     }),
+    // extract webpack runtime and module manifest to its own file in order to
+    // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      minChunks: Infinity
+      chunks: ['vendor']
     })
-  ],
-  devtool: 'source-map',
-  module: {
-    loaders: [{
-        test: /\.ts$/,
-        exclude: /node_modules|vue\/src/,
-        enforce: 'pre',
-        loader: 'tslint-loader'
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules|vue\/src/,
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          esModule: true,
-          loaders: {
-            ts: 'ts-loader!tslint-loader',
-            scss: 'vue-style-loader!css-loader!sass-loader'
-          }
-        }
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8192
-          }
-        }]
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]'
-          }
-        }]
-      }
-    ]
-  }
-};
-
-module.exports = config;
+  ]
+});
