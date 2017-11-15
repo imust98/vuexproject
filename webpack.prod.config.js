@@ -34,7 +34,7 @@ module.exports = merge(baseWebpackConfig, {
     // }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'css/[name].[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
@@ -74,7 +74,11 @@ module.exports = merge(baseWebpackConfig, {
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
+<<<<<<< HEAD
             path.join(__dirname, './node_modules')
+=======
+            path.join(__dirname, '../node_modules')
+>>>>>>> a0f16bba0bbbe51736f887344caa53296db63128
           ) === 0
         )
       }
