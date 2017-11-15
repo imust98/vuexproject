@@ -10,3 +10,7 @@ package-lock.json
 
 # 前端生成文件
 dist/
+
+# mock 文件
+mock.data
+nei.22496.8c22091796974f8b247d452e70532fcb

@@ -15,7 +15,10 @@ module.exports = merge(baseWebpackConfig, {
     openPage:'userManage',
     port:8090,
     inline: true,
-    historyApiFallback:true
+    historyApiFallback:true,
+    proxy: {
+      '/api': 'http://localhost:8002'
+    }
   },
   plugins: [
     new StylelintPlugin({

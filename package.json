@@ -9,8 +9,9 @@
     "url": "https://g.hz.netease.com/hzlihaoliang/napm4"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.config.js",
-    "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "start": "npm run start:dev | npm run start:nei",
+    "start:dev": "webpack-dev-server --config webpack.dev.config.js",
+    "start:nei":"nei server",
     "test": "npm run stylelint && npm run tslint",
     "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
     "tslint": "tslint ./src/**/*.ts",
