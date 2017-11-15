@@ -16,7 +16,9 @@
     "stylelint": "stylelint --config .stylelintrc --syntax scss \"src/**/*.@(vue|scss)\"",
     "tslint": "tslint ./src/**/*.ts",
     "build": "webpack  --config webpack.prod.config.js",
-    "regist-com": "node registComponent.js"
+    "regist-com": "node registComponent.js",
+    "nei:build":"nei build -k 8c22091796974f8b247d452e70532fcb",
+    "nei:update":"nei update -w -k 8c22091796974f8b247d452e70532fcb"
   },
   "keywords": [
     "apm",
