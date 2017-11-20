@@ -30,11 +30,13 @@ import { Component, Prop, Watch } from 'vue-property-decorator';
 @Component
 export default class Table extends Vue {
   @Prop()
-  private klass:string;
+  private klass: string;
   @Prop()
-  private sourcelist:any;
-  @Prop()
-  private emptyText:string = '没有数据';
+  private sourcelist: any;
+  @Prop({
+    default: '没有数据'
+  })
+  private emptyText:string;
 }
 </script>
 

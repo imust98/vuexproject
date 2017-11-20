@@ -38,11 +38,8 @@
   export default class UserCenterContainer extends Vue {
     private tableData:UserModule[] = [{id:2,name:"lilei"},{id:3,name:"jkjkj"}];
     private handEdit(index:number,item:any):void{
-      console.log('edit');
-      debugger;
     }
     private handDelete(index:number,item:any):void{
-      console.log('delete');
     }
   }
 </script>
