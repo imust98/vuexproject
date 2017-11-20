@@ -8,13 +8,13 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component, Prop, Watch } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Prop, Watch } from 'vue-property-decorator';
 
-export const ComTemplate = Vue.extend({
-  name: 'componentName',
-  data() {}
-});
+@Component
+export default class componentName extends Vue {
+
+}
 </script>
 
 <style lang="scss">
