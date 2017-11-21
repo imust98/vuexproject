@@ -40,6 +40,12 @@
     private handEdit(index:number,item:any):void{
     }
     private handDelete(index:number,item:any):void{
+      this.$store.commit('increment');
+      console.log(this.$store.state.count);
+    }
+    private created() {
+      console.log(this.$store.state.count);
+      this.$store.dispatch('GET_USER_LIST');
     }
   }
 </script>
