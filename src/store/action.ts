@@ -1,8 +1,7 @@
 import { GET_USER_LIST } from './mutation-types';
 import fetch from './fetch';
 const actions = {
-  GET_USER_LIST() {
-    // todo
+  GET_USER_LIST({ commit }: { commit: any }) {
     fetch({
       url: '/api/users/:id',
       method: 'GET'
@@ -12,6 +11,9 @@ const actions = {
         }
       }).then((result: any) => {
         console.log(result);
+        commit('USER_LIST_LOAD', {
+          list: result
+        });
       });
   }
 };

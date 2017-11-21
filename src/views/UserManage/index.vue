@@ -1,17 +1,17 @@
 <template>
   <div class="m-main m-user">
     <h1>用户管理页面</h1>
-    <apm-table :sourcelist="tableData" klass="m-table-user">
+    <apm-table :sourcelist="userlist" klass="m-table-user">
         <template slot="header">
           <tr>
             <td class="column_100">用户名</td>
-            <td class="column_200">邮箱</td>
+            <td class="column_200">用户类别</td>
             <td>操作</td>
           </tr>
         </template>
         <template scope="props" slot="body">
-            <td class="column_100">{{props.item.id}}</td>
-            <td class="column_200">{{props.item.name}}</td>
+            <td class="column_100">{{props.item.name}}</td>
+            <td class="column_200">{{props.item.userTag}}</td>
             <td>
               <a @click="handEdit(props.$index,props.item)">修改</a>
               <a @click="handDelete(props.$index,props.item)">删除</a> 
@@ -27,7 +27,8 @@
 
   interface UserModule {
     id:number,
-    name:string
+    name:string,
+    userTag:number
   }
 
   @Component({
@@ -36,16 +37,17 @@
     }
   })
   export default class UserCenterContainer extends Vue {
-    private tableData:UserModule[] = [{id:2,name:"lilei"},{id:3,name:"jkjkj"}];
-    private handEdit(index:number,item:any):void{
+    private handEdit(index: number,item: any): void {
     }
-    private handDelete(index:number,item:any):void{
-      this.$store.commit('increment');
-      console.log(this.$store.state.count);
+    private handDelete(index: number,item: any): void {
+      // this.$store.commit('delete');
     }
     private created() {
-      console.log(this.$store.state.count);
       this.$store.dispatch('GET_USER_LIST');
+    }
+    // 获取项目列表
+    private get userlist(): UserModule[] {
+      return this.$store.state['users'];
     }
   }
 </script>
