@@ -38,17 +38,6 @@ function fetchTimeout(time: number = defaultTimeout): Promise<Response> {
   });
 }
 
-// 判断参数是否是其中之一
-function oneOf<T>(value: T, validList: T[]): boolean {
-  for (const item of validList) {
-    if (item === value) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
 /**
  * 处理 fetch 参数
  */
@@ -77,7 +66,7 @@ export function fetchParamParser(config: IFetchRequest, init?: IFetchInit): [str
   }
 
   // query string
-  if (oneOf(method, ['GET', 'DELETE']) && init && init.body) {
+  if (['GET', 'DELETE'].includes(method) && init && init.body) {
     const query = stringify(init.body);
 
     url = url.includes('?')
@@ -86,7 +75,7 @@ export function fetchParamParser(config: IFetchRequest, init?: IFetchInit): [str
   }
 
   // stringify body
-  if (!oneOf(method, ['GET', 'DELETE']) && init && init.body && isPlainObject(init.body)) {
+  if (!['GET', 'DELETE'].includes(method) && init && init.body && isPlainObject(init.body)) {
     init.body = JSON.stringify(init.body);
   }
 
