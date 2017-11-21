@@ -7,7 +7,7 @@
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-console": true,
+    "no-console": false,
     "curly": true,
     "no-debugger": true,
     "semicolon": [true, "always"],

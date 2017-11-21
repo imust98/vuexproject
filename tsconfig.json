@@ -1,26 +1,38 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "types": [
-            "node",
-            "webpack-env"
-         ],
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "strict": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "removeComments": true,
-        "sourceMap": true
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@css/*": [
+        "./css/*"
+      ],
+      "lodash/*": [
+        "node_modules/@types/lodash-es/*"
+      ]
     },
-    "include": [
-        "./src/**/*.ts",
-        "./**/*.vue",
-        "./types/**/*"
+    "target": "es6",
+    "types": [
+      "node",
+      "webpack-env"
     ],
-    "compileOnSave": false
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "module": "es6",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./**/*.vue",
+    "./types/**/*"
+  ],
+  "compileOnSave": false
 }
