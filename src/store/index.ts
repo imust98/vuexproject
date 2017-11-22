@@ -7,7 +7,7 @@ import actions from './action';
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
-    count: 0
+    users: []
   },
   mutations,
   actions

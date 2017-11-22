@@ -22,13 +22,13 @@
 </template>
 <script lang="ts">
   import Vue from 'vue';
-  import { Component } from 'vue-property-decorator';
+  import {Component , Watch} from 'vue-property-decorator';
   import ApmTable from '../../components/Table/index.vue';
 
   interface UserModule {
-    id:number,
-    name:string,
-    userTag:number
+    id: number,
+    name: string,
+    userTag: number
   }
 
   @Component({
@@ -37,26 +37,28 @@
     }
   })
   export default class UserCenterContainer extends Vue {
-    private handEdit(index: number,item: any): void {
+    private handEdit(index: number , item: any): void {
     }
-    private handDelete(index: number,item: any): void {
-      // this.$store.commit('delete');
+    private handDelete(index: number , item: any): void {
+      this.$store.dispatch('DELETE_USER_ITEM',{id: item.id});
     }
     private created() {
-      this.$store.dispatch('GET_USER_LIST');
+      this.$store.dispatch('GET_USER_LIST',{
+        id:113
+      });
     }
-    // 获取项目列表
+    // 获取用户列表
     private get userlist(): UserModule[] {
       return this.$store.state['users'];
     }
   }
 </script>
 <style lang="scss">
-  .m-table-user{
-    .column_100{
+  .m-table-user {
+    .column_100 {
       width: 100px;
     }
-    .column_200{
+    .column_200 {
       width: 200px;
     }
   }
