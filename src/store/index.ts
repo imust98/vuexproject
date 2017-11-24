@@ -1,15 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import mutations from './mutations';
-import actions from './action';
+// vuex modules
+import user from './modules/UserModule';
 
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
-  state: {
-    users: []
-  },
-  mutations,
-  actions
+  modules: {
+    user
+  }
 });
 export default store;

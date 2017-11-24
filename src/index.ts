@@ -3,8 +3,7 @@ import App from './views/App.vue';
 import { sync } from 'vuex-router-sync';
 import router from './router';
 import store from './store';
-// tslint:disable-next-line
-new Vue({
+const obj = new Vue({
   el: '#app',
   router,
   store,

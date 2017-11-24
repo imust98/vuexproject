@@ -40,16 +40,16 @@
     private handEdit(index: number , item: any): void {
     }
     private handDelete(index: number , item: any): void {
-      this.$store.dispatch('DELETE_USER_ITEM',{id: item.id});
+      this.$store.dispatch('user/deleteItem',{id: item.id});
     }
     private created() {
-      this.$store.dispatch('GET_USER_LIST',{
+      this.$store.dispatch('user/getList',{
         id:113
       });
     }
     // 获取用户列表
     private get userlist(): UserModule[] {
-      return this.$store.state['users'];
+      return this.$store.state.user.users;
     }
   }
 </script>

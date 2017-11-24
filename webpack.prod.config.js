@@ -42,11 +42,6 @@ module.exports = merge(baseWebpackConfig, {
         safe: true
       }
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    //   }
-    // }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin

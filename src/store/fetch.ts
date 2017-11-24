@@ -132,9 +132,6 @@ export function fetch(config: IFetchRequest, init?: IFetchInit): Promise<any> {
       }
 
       return nextData;
-    })
-    .then(responseData => {
-      return responseData;
     });
 }
 
